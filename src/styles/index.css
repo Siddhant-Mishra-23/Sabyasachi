@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap') layer(base);
+
+@import 'tailwindcss';
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+
+  --color-current: currentColor;
+  --color-transparent: transparent;
+  --color-white: #ffffff;
+  --color-black: #121723;
+
+  /* Personal Brand Colors */
+  --color-primary: #2A004E;
+  --color-secondary: #C62300;
+  --color-accent: #F14A00;
+
+  /* Purple palette */
+  --color-purple-dark: #1a0a2e;
+  --color-purple-deep: #2A004E;
+  --color-purple-mid: #4a1a6e;
+  --color-purple-light: #6a3a8e;
+
+  --color-dark: #2A004E;
+  --color-body-color: #2A004E;
+  --color-stroke-stroke: #e3e8ef;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  --color-gray-light: #f0f2f9;
+
+  --shadow-one: 0px 2px 3px rgba(42, 0, 78, 0.08);
+  --shadow-two: 0px 5px 10px rgba(42, 0, 78, 0.15);
+  --shadow-three: 0px 5px 15px rgba(42, 0, 78, 0.08);
+  --shadow-sticky: inset 0 -1px 0 0 rgba(42, 0, 78, 0.1);
+  --shadow-submit: 0px 5px 20px rgba(42, 0, 78, 0.15);
+
+  --drop-shadow-three: 0px 5px 15px rgba(42, 0, 78, 0.08);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Light mode (default) - text deep purple, bg white */
+  body {
+    font-family: "Inter", sans-serif;
+    background-color: #FFFFFF;
+    color: #2A004E;
+  }
+
+  /* Dark mode - text white, bg purple */
+  html[data-theme="dark"] body {
+    background-color: #2A004E;
+    color: #FFFFFF;
+  }
+
+  /* Dark mode section backgrounds */
+  html[data-theme="dark"] .bg-white {
+    background-color: #3a1a5e !important;
+  }
+
+  html[data-theme="dark"] .bg-gray-light,
+  html[data-theme="dark"] .bg-gray-50 {
+    background-color: #2A004E !important;
+  }
+
+  /* Dark mode text overrides */
+  html[data-theme="dark"] .text-black {
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .text-dark {
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .text-body-color {
+    color: #e0d0f0 !important;
+  }
+
+  html[data-theme="dark"] .text-primary {
+    color: #d8a8ff !important;
+  }
+
+  html[data-theme="dark"] .bg-primary {
+    background-color: #5a2a7e !important;
+  }
+
+  html[data-theme="dark"] .bg-primary\/10 {
+    background-color: rgba(90, 42, 126, 0.4) !important;
+  }
+
+  html[data-theme="dark"] .border-body-color\/10 {
+    border-color: rgba(224, 208, 240, 0.2) !important;
+  }
+
+  html[data-theme="dark"] .shadow-one {
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  html[data-theme="dark"] .shadow-two {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Dark mode header/nav adjustments */
+  html[data-theme="dark"] .bg-white\/90,
+  html[data-theme="dark"] .bg-white\/70 {
+    background-color: rgba(58, 26, 94, 0.95) !important;
+  }
+
+  html[data-theme="dark"] .text-primary\/70 {
+    color: rgba(216, 168, 255, 0.8) !important;
+  }
+}
+
+@layer components {
+  input[type="checkbox"]:checked~label span svg {
+    @apply inline-flex;
+  }
+
+  /* Gradient utilities */
+  .gradient-accent {
+    background: linear-gradient(135deg, #2A004E 0%, #C62300 50%, #F14A00 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #2A004E 0%, #C62300 50%, #F14A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Blog card hover effects */
+  .blog-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .blog-card:hover .blog-card-image {
+    transform: scale(1.05);
+  }
+
+  .blog-card-image {
+    transition: transform 0.4s ease;
+  }
+}
